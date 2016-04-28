@@ -51,3 +51,4 @@ public class UsuarioBean {
         context.addCallbackParam("loggedIn", loggedIn);
     }   
 }
+//
