@@ -1,7 +1,15 @@
 package model;
-public class fornecedor {
+public class Fornecedor {
     private int id_for;
     private String nome_for;
+
+    public String getNome_for() {
+        return nome_for;
+    }
+
+    public void setNome_for(String nome_for) {
+        this.nome_for = nome_for;
+    }
     
 
     public int getId_for() {

@@ -1,7 +1,7 @@
 package dao;
 
-import br.com.projetoLivraria.factory.ConnectionFactory;
-import br.com.projetoLivraria.model.DadosProduto;
+import factory.ConnectionFactory;
+import model.Produto;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -12,17 +12,17 @@ public class ProdutoDAO {
 
    
 
-        public void salvar(DadosProduto d)
+        public void salvar(Produto d)
                 throws ClassNotFoundException, SQLException {
-            String sql = "INSERT INTO produto (nome,quantidade,preco,id_produto) VALUES(?,?,?,?)";
+            String sql = "INSERT INTO produto (nome,quantidade,preco,id_fornecedor) VALUES(?,?,?,?)";
 
             Connection connection = ConnectionFactory.getConnection();
 
             PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setString(1, d.getNome());
-            stmt.setInt(2, d.getQuantidade());
-            stmt.setFloat(3, d.getPreco());
-            stmt.setInt(4, d.getId_produto());
+            stmt.setInt(2, d.getQtd());
+            stmt.setDouble(3, d.getPreco());
+            stmt.setInt(4, d.getId_for());
             stmt.execute();
             stmt.close();
 
@@ -50,14 +50,14 @@ public class ProdutoDAO {
          }
          */
 
-       public void excluir(DadosProduto d)
+       public void excluir(Produto d)
                 throws ClassNotFoundException, SQLException {
             String sql = "DELETE FROM produto WHERE id_produto = ?";
 
             Connection connection = ConnectionFactory.getConnection();
 
             PreparedStatement stmt = connection.prepareStatement(sql);
-            stmt.setInt(1, d.getId_produto());
+            stmt.setInt(1, d.getId_pro());
             stmt.execute();
             stmt.close();
         }
@@ -75,17 +75,17 @@ public class ProdutoDAO {
         
          }*/
 
-        public void editar(DadosProduto d) throws ClassNotFoundException, SQLException {
-            String sql = "UPDATE produto SET nome = ?, quantidade = ?, preco = ?,id_produto=? WHERE id_produto = ?";
+        public void editar(Produto d) throws ClassNotFoundException, SQLException {
+            String sql = "UPDATE produto SET nome = ?, quantidade = ?, preco = ?,id_fornecedor=? WHERE id_produto = ?";
 
             Connection connection = ConnectionFactory.getConnection();
 
             PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setString(1, d.getNome());
-            stmt.setInt(2, d.getQuantidade());
-            stmt.setFloat(3, d.getPreco());
-            stmt.setInt(4, d.getCod_fornecedor());
-            stmt.setInt(5, d.getId_produto());
+            stmt.setInt(2, d.getQtd());
+            stmt.setDouble(3, d.getPreco());
+            stmt.setInt(4, d.getId_for());
+            stmt.setInt(5, d.getId_pro());
             stmt.execute();
             stmt.close();
         }
@@ -127,8 +127,9 @@ public class ProdutoDAO {
         return retorno;
     }
          */
-        public ArrayList<DadosProduto> lista() throws SQLException, ClassNotFoundException {
-            String sql = "select produto.id_produto, produto.nome, produto.quantidade, produto.preco, editora.razao_social from produto inner join editora on editora.id_editora = produto.cod_editora";
+        public ArrayList<Produto> lista() throws SQLException, ClassNotFoundException {
+            String sql = "select produto.id_produto, produto.nome, produto.qtd, produto.preco"
+                    + ", fonecedor.nome from produto inner join fornecedor on fornecedor.id_fornecedor = produto.id_fornecedor";
 
             Connection connection = ConnectionFactory.getConnection();
 
@@ -136,15 +137,15 @@ public class ProdutoDAO {
 
             ResultSet rs = stmt.executeQuery();
 
-            ArrayList<DadosProduto> lista = new ArrayList<DadosProduto>();
+            ArrayList<Produto> lista = new ArrayList<Produto>();
 
             while (rs.next()) {
-                DadosProduto e = new DadosProduto();
-                e.setId_produto(rs.getInt("id_produto"));
+                Produto e = new Produto();
+                e.setId_pro(rs.getInt("id_produto"));
                 e.setNome(rs.getString("nome"));
-                e.setQuantidade(rs.getInt("quantidade"));
-                e.setPreco(rs.getFloat("preco"));
-                e.setFornecedor(rs.getString("razao_social"));
+                e.setQtd(rs.getInt("qtd"));
+                e.setPreco(rs.getDouble("preco"));
+                e.setNome_for((rs.getString("nome")));
                 lista.add(e);
             }
             return lista;
