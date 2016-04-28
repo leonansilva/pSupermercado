@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="ProjetoSupermercado" id="Project_46bdf8" html="y" template="Default" database="MySql" >
+	<schema name="projetosupermercado" schemaname="projetosupermercado" >
+		<table name="tabela fornecedor" >
+			<column name="id_fornecedor" type="int" jt="4" mandatory="y" autoincrement="y" />
+			<column name="nome_fornecedor" type="varchar" length="255" jt="12" />
+			<index name="pk_tabela fornecedor" unique="PRIMARY_KEY" >
+				<column name="id_fornecedor" />
+			</index>
+			<storage><![CDATA[engine=InnoDB]]></storage>
+		</table>
+		<table name="tabela produto" >
+			<column name="id_produto" type="int" jt="4" mandatory="y" autoincrement="y" />
+			<column name="nome" type="varchar" length="255" jt="12" />
+			<column name="quantidade" type="int" jt="4" />
+			<column name="preco" type="int" jt="4" />
+			<index name="pk_tabela produto" unique="PRIMARY_KEY" >
+				<column name="id_produto" />
+			</index>
+			<storage><![CDATA[engine=InnoDB]]></storage>
+		</table>
+		<table name="tabela usuarios" >
+			<column name="id" type="int" jt="4" mandatory="y" autoincrement="y" />
+			<column name="nome" type="varchar" length="255" jt="12" />
+			<column name="senha" type="int" jt="4" />
+			<index name="pk_tabela usuarios" unique="PRIMARY_KEY" >
+				<column name="id" />
+			</index>
+			<storage><![CDATA[engine=InnoDB]]></storage>
+		</table>
+	</schema>
+	<layout id="Layout_46bdf8" name="ProjetoSupermercado" show_relation_columns="y" >
+		<entity schema="projetosupermercado" name="tabela usuarios" color="b2cdf7" x="45" y="45" />
+		<entity schema="projetosupermercado" name="tabela produto" color="b2cdf7" x="210" y="45" />
+		<entity schema="projetosupermercado" name="tabela fornecedor" color="b2cdf7" x="330" y="60" />
+	</layout>
+</project>
