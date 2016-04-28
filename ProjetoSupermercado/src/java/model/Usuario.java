@@ -1,7 +1,9 @@
 package model;
 public class Usuario {
+    private int id_user;
     private String nome;
     private String senha;
+    
 
     public String getNome() {
         return nome;
