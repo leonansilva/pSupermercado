@@ -44,7 +44,7 @@ public class FornecedorDAO {
                    
     public void excluir(Fornecedor f)
             throws ClassNotFoundException, SQLException{
-        String sql = "DELETE FROM fornecedor WHERE Id_for = ?";
+        String sql = "DELETE FROM fornecedor WHERE Id_fornecedor = ?";
         
         Connection connection = ConnectionFactory.getConnection();
         
@@ -68,7 +68,7 @@ public class FornecedorDAO {
         
     }*/
     public void editar(Fornecedor f)throws ClassNotFoundException,SQLException{
-        String sql= "UPDATE fornecedor SET getNome_for = ? WHERE Id_for= ?";
+        String sql= "UPDATE fornecedor SET getNome_fornecedor = ? WHERE Id_for= ?";
         
         Connection connection = ConnectionFactory.getConnection();
         
@@ -95,7 +95,7 @@ public class FornecedorDAO {
         }
     }*/
     public Fornecedor pesquisar(Fornecedor f)throws ClassNotFoundException, SQLException{
-        String sql = "SELECT * FROM fornecedor WHERE Id_for = ?";
+        String sql = "SELECT * FROM fornecedor WHERE Id_fornecedor = ?";
         
         Connection connection = ConnectionFactory.getConnection();
         
@@ -127,7 +127,7 @@ public class FornecedorDAO {
         while(rs.next()){
             Fornecedor f = new Fornecedor();
             f.setId_for(rs.getInt("id_fornecedor"));
-            f.setNome_for(rs.getString("nomel"));            
+            f.setNome_for(rs.getString("nome"));            
             lista.add(f);
         }
         return lista;
