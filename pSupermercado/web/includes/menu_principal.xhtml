@@ -23,13 +23,6 @@
         </p:menubar>    
     </h:form>
 
-    <h3>Fade</h3>
-    <p:imageSwitch effect="fade" id="fadeEffect">
-        <ui:repeat value="#{imagesView.images}" var="image" id="fadeEffectImages">
-            <p:graphicImage name="/imagens/1.jpg" id="image" />
-        </ui:repeat>
-    </p:imageSwitch>
-    
     <h:form id ="frmLogin">            
     <h:outputLink value="javascript:void(0)" onclick="PF('dlg').show();" title="login"/>
 

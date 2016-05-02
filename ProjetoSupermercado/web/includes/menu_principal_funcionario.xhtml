@@ -8,20 +8,12 @@
     
     <h:form>
         <p:menubar>
-            <p:submenu label="Opçoes" >
                 <p:menuitem value="Home" outcome="/pages/principal_funcionario"/>
-                <p:menuitem value="Sair" outcome="/pages/principal" value=""/>
-            </p:submenu>
-            
             <p:submenu label="Cadastros">
-                
                 <p:menuitem value="Fornecedor" outcome="/pages/fornecedor_funcionario.xhtml"/>
                 <p:menuitem value="Produto" outcome="/pages/produto_funcionario.xhtml"/>  
             </p:submenu>
-        
-            <p:submenu label="Ajuda">
-                <p:menuitem value="Sobre"/>
-            </p:submenu>
+                <p:menuitem value="Sair" outcome="/pages/principal"/>
         </p:menubar>
     </h:form>
     
