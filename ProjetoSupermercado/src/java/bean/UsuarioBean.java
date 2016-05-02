@@ -13,16 +13,16 @@ import org.primefaces.context.RequestContext;
 @ManagedBean (name = "MBUsuario")
 public class UsuarioBean {
      
-    private String email;
+    private String nome;
      
     private String senha;
 
-    public String getEmail() {
-        return email;
+    public String getNome() {
+        return nome;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     public String getSenha() {
@@ -32,16 +32,17 @@ public class UsuarioBean {
     public void setSenha(String senha) {
         this.senha = senha;
     }
- 
+
+    
     public void login(ActionEvent event) throws IOException {
         RequestContext context = RequestContext.getCurrentInstance();
         FacesMessage message = null;
         boolean loggedIn = false;
          
-        if(email != null && email.equals(email) && senha != null && senha.equals(senha)) {
+        if(nome != null && nome.equals(nome) && senha != null && senha.equals(senha)) {
             loggedIn = true;
-            FacesContext.getCurrentInstance().getExternalContext().redirect("editora.xhtml");
-             message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Welcome", email);
+            FacesContext.getCurrentInstance().getExternalContext().redirect("principal_funcionario.xhtml");
+             message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Bem vindo ", nome);
         } else {
             loggedIn = false;
             message = new FacesMessage(FacesMessage.SEVERITY_WARN, "Loggin Error", "Invalid credentials");
@@ -51,4 +52,3 @@ public class UsuarioBean {
         context.addCallbackParam("loggedIn", loggedIn);
     }   
 }
-//

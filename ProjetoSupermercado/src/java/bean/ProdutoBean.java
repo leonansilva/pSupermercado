@@ -3,9 +3,9 @@ package bean;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
-import br.com.projetoLivraria.dao.ProdutoDao;
-import br.com.projetoLivraria.model.DadosProduto; 
-import br.com.projetoLivraria.util.JSFUtil;
+import dao.ProdutoDAO;
+import model.Produto; 
+import util.JSFUtil;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -16,29 +16,29 @@ import javax.faces.bean.ViewScoped;
 @ManagedBean(name = "MBProduto")
 @ViewScoped
 public class ProdutoBean {
-      private ArrayList<DadosProduto> itens;
-    private DadosProduto produto;
+    private ArrayList<Produto> itens;
+    private Produto produto;
 
-    public ArrayList<DadosProduto> getItens() {
+    public ArrayList<Produto> getItens() {
         return itens;
     }
 
-    public void setItens(ArrayList<DadosProduto> itens) {
+    public void setItens(ArrayList<Produto> itens) {
         this.itens = itens;
     }
 
-    public DadosProduto getProduto() {
+    public Produto getProduto() {
         return produto;
     }
 
-    public void setProduto(DadosProduto produto) {
+    public void setProduto(Produto produto) {
         this.produto = produto;
     }
     @PostConstruct
     public void prepararPesquisa() {
-        ProdutoDao dao = new ProdutoDao();
+        ProdutoDAO dao = new ProdutoDAO();
         try {
-            itens = dao.lista();
+            itens = dao.listaProduto();
         } catch (SQLException ex) {
             Logger.getLogger(ProdutoBean.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
@@ -46,15 +46,15 @@ public class ProdutoBean {
         }
     }
     public void prepararProduto() {
-        produto = new DadosProduto();
+        produto = new Produto();
     }
 
     public void novoProduto() throws ClassNotFoundException {
         try {
-            ProdutoDao dao = new ProdutoDao();
-            dao.salvar(produto);
-            itens = dao.lista();
-            JSFUtil.addMsgSucesso("produto salvo com sucesso.");
+            ProdutoDAO dao = new ProdutoDAO();
+            dao.salvarProduto(produto);
+            itens = dao.listaProduto();
+            JSFUtil.addMsgSucesso("Produto salvo com sucesso.");
         } catch (SQLException e) {
             e.printStackTrace();
             JSFUtil.addMsgErro(e.getMessage());
@@ -68,9 +68,9 @@ public class ProdutoBean {
 
     public void excluirProduto() throws ClassNotFoundException {
         try {
-            ProdutoDao dao = new ProdutoDao();
-            dao.excluir(produto);
-            itens = dao.lista();
+            ProdutoDAO dao = new ProdutoDAO();
+            dao.excluirProduto(produto);
+            itens = dao.listaProduto();
             JSFUtil.addMsgSucesso("Produto excluido com sucesso.");
         } catch (SQLException e) {
            e.printStackTrace();
@@ -83,9 +83,9 @@ public class ProdutoBean {
     //metodo editar produto
     public void editarProduto() throws ClassNotFoundException {
         try {
-            ProdutoDao dao = new ProdutoDao();
-            dao.editar(produto);
-            itens = dao.lista();
+            ProdutoDAO dao = new ProdutoDAO();
+            dao.editarProduto(produto);
+            itens = dao.listaProduto();
             JSFUtil.addMsgSucesso("Produto editado com sucesso.");
         } catch (SQLException e) {
             e.printStackTrace();

@@ -1,6 +1,6 @@
 package model;
 public class Produto extends Fornecedor{
-    private String nome;
+    private String nome_pro;
     private int qtd, id_pro;
 
     public int getId_pro() {
@@ -13,13 +13,14 @@ public class Produto extends Fornecedor{
 
     private double preco;
 
-    public String getNome() {
-        return nome;
+    public String getNome_pro() {
+        return nome_pro;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setNome_pro(String nome_pro) {
+        this.nome_pro = nome_pro;
     }
+
 
     public int getQtd() {
         return qtd;
