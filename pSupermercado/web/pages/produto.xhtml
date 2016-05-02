@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"   
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      template="/template/modelo_template.xhtml">
+    
+    <ui:define name="menu">
+        <ui:include src="../includes/menu_principal.xhtml"/>
+       
+    </ui:define>
+    
+    <ui:define name="conteudo">
+        <h:form id="frmProduto">
+            <p:dataTable emptyMessage="Nenhum produto cadastrado" value="#{MBProduto.itens}"
+                         var="item" paginator="true" rows="5" id="tbProduto">
+                <f:facet name="header">
+                    Produto - Listagem
+                </f:facet>
+                <p:column headerText="Código" sortBy="#{item.id_pro}" filterBy="#{item.id_pro}">
+                    <h:outputText value="#{item.id_pro}"/>
+                </p:column>
+                <p:column headerText="Nome" sortBy="#{item.nome_pro}" 
+                          filterBy="#{item.nome_pro}">
+                    <h:outputText value="#{item.nome_pro}"/>
+                </p:column>
+                <p:column headerText="Quantidade" sortBy="#{item.qtd}" filterBy="#{item.qtd}">
+                    <h:outputText value="#{item.qtd}"/>
+                </p:column>
+                <p:column headerText="Preço" sortBy="#{item.preco}" 
+                          filterBy="#{item.preco}">
+                    <h:outputText value="#{item.preco}"/>
+                </p:column>
+                <p:column headerText="Fornecedor" sortBy="#{item.nome_for}" 
+                          filterBy="#{item.nome_for}">
+                    <h:outputText value="#{item.nome_for}"/>
+                </p:column>
+            </p:dataTable>
+        </h:form>  
+            
+    </ui:define>
+</ui:composition>

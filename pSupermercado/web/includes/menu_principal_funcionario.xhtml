@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"   
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    
+    <h:form>
+        <p:menubar>
+            <p:submenu label="Opçoes" >
+                <p:menuitem value="Home" outcome="/pages/principal_funcionario"/>
+                <p:menuitem value="Sair" outcome="/pages/principal" value=""/>
+            </p:submenu>
+            
+            <p:submenu label="Cadastros">
+                
+                <p:menuitem value="Fornecedor" outcome="/pages/fornecedor_funcionario.xhtml"/>
+                <p:menuitem value="Produto" outcome="/pages/produto_funcionario.xhtml"/>  
+            </p:submenu>
+        
+            <p:submenu label="Ajuda">
+                <p:menuitem value="Sobre"/>
+            </p:submenu>
+        </p:menubar>
+    </h:form>
+    
+</ui:composition>
