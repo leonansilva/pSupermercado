@@ -27,7 +27,8 @@ public class FornecedorDAO {
          Connection connection = ConnectionFactory.getConnection();
         
         PreparedStatement stmt = connection.prepareStatement(sql);
-        stmt.setInt(1, f.getId_for());
+        stmt.setString(1, f.getNome_for());
+        stmt.setInt(2, f.getId_for());
         stmt.execute();
         stmt.close();
     }       

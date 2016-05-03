@@ -36,7 +36,7 @@ public class ProdutoDAO {
             stmt.close();
         }
         public void editarProduto(Produto d) throws ClassNotFoundException, SQLException {
-            String sql = "UPDATE produto SET nome = ?, qtd = ?, preco = ?,id_fornecedor=? WHERE id_produto = ?";
+            String sql = "UPDATE produto SET nome = ?, qtd = ?, preco = ?,id_fornecedor= ? WHERE id_produto = ?";
 
             Connection connection = ConnectionFactory.getConnection();
 
