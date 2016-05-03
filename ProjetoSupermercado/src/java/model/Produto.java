@@ -1,5 +1,5 @@
 package model;
-public class Produto extends Fornecedor{
+public class produto extends fornecedor{
     private String nome_pro;
     private int qtd, id_pro;
 

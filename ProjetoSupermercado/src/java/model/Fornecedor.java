@@ -1,5 +1,5 @@
 package model;
-public class Fornecedor {
+public class fornecedor {
     private int id_for;
     private String nome_for;
 
