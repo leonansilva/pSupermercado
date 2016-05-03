@@ -1,6 +1,6 @@
 package bean;
 
-import model.fornecedor;
+import model.Fornecedor;
 import dao.FornecedorDAO;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -17,22 +17,22 @@ import util.JSFUtil;
 // escopo: request (a cada clique é instanciado)
 @ViewScoped
 public class FornecedorBean{
-    private ArrayList<fornecedor> itens;
-    private fornecedor fornecedor;
+    private ArrayList<Fornecedor> itens;
+    private Fornecedor fornecedor;
 
-        public ArrayList<fornecedor> getItens() {
+        public ArrayList<Fornecedor> getItens() {
             return itens;
         }
 
-        public void setItens(ArrayList<fornecedor> itens) {
+        public void setItens(ArrayList<Fornecedor> itens) {
             this.itens = itens;
         }
 
-        public fornecedor getFornecedor() {
+        public Fornecedor getFornecedor() {
             return fornecedor;
         }
 
-        public void setFornecedor(fornecedor fornecedor) {
+        public void setFornecedor(Fornecedor fornecedor) {
             this.fornecedor = fornecedor;
         }
 
@@ -56,7 +56,7 @@ public class FornecedorBean{
         }
     } 
         public  void prepararFornecedor(){
-        fornecedor = new fornecedor();
+        fornecedor = new Fornecedor();
     }
 
     public void novoFornecedor(){

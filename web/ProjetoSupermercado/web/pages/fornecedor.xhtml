@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"   
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      template="/template/modelo_template.xhtml">
+    
+    <ui:define name="menu">
+        <ui:include src="../includes/menu_principal.xhtml"/>
+       
+    </ui:define>
+    
+    <ui:define name="conteudo">
+        <h:form id="frmFornecedor">
+            <p:dataTable emptyMessage="Nenhum fornecedor cadastrado" value="#{MBFornecedor.itens}"
+                         var="item" paginator="true" rows="5" id="tbFornecedor">
+                <f:facet name="header">
+                    Fornecedor - Listagem
+                </f:facet>
+                <p:column headerText="Código" sortBy="#{item.id_for}" filterBy="#{item.id_for}">
+                    <h:outputText value="#{item.id_for}"/>
+                </p:column>
+                <p:column headerText="Fornecedor" sortBy="#{item.nome_for}" 
+                          filterBy="#{item.nome_for}">
+                    <h:outputText value="#{item.nome_for}"/>
+                </p:column>   
+            </p:dataTable> 
+        </h:form>
+    </ui:define>
+</ui:composition>
