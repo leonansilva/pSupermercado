@@ -39,11 +39,15 @@
 	<connector name="MySql" database="MySql" driver_class="com.mysql.jdbc.Driver" driver_jar="mysql-connector-java-5.1.34-bin.jar" host="localhost" port="3306" user="root" passwd="MDg5MA==" schema_mapping="" />
 	<layout id="Layout_5f12bd" name="hue" show_relation_columns="y" >
 		<entity schema="supermercado" name="produto" color="b2cdf7" x="360" y="60" />
-		<entity schema="supermercado" name="usuario" color="b2cdf7" x="75" y="195" />
 		<entity schema="supermercado" name="fornecedor" color="b2cdf7" x="45" y="45" />
+		<entity schema="supermercado" name="usuario" color="b2cdf7" x="75" y="195" />
 		<script name="fornecedor" id="SQL_649010" >
 			<string><![CDATA[INSERT INTO supermercado.fornecedor
 	( id_fornecedor, nome_fornecedor) VALUES ( ?, ? );]]></string>
+		</script>
+		<script name="usuario" id="SQL_6dafd4" >
+			<string><![CDATA[INSERT INTO supermercado.usuario
+	(nome, senha) VALUES ("Igor Carvalho", "1234" );]]></string>
 		</script>
 	</layout>
 </project>

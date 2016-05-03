@@ -49,5 +49,9 @@
 			<string><![CDATA[INSERT INTO supermercado.usuario
 	(nome, senha) VALUES ("Igor Carvalho", "1234" );]]></string>
 		</script>
+		<script name="usuario_001" id="SQL_4db995" >
+			<string><![CDATA[INSERT INTO supermercado.usuario
+	(nome, senha) VALUES ("Igor Carvalho", "1234" );]]></string>
+		</script>
 	</layout>
 </project>
