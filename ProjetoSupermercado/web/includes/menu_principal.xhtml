@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"   
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    
+    <h:form>
+        <p:menubar>
+                <p:menuitem value="Home" url="principal.xhtml" />
+                
+            <p:submenu label="Tabelas">    
+                <p:menuitem value="Fornecedor" outcome="/pages/fornecedor.xhtml"/>
+                <p:menuitem value="Produto" outcome="/pages/produto.xhtml"/>  
+            </p:submenu>
+        
+                 <p:menuitem value="Login"  oncomplete="PF('dlg').show();"
+                    update=":frmLogin:pnlLogin"/>
+        </p:menubar>    
+    </h:form>
+
+    <h:form id ="frmLogin">            
+    <h:outputLink value="javascript:void(0)" onclick="PF('dlg').show();" title="login"/>
+
+    <p:growl id="growl" sticky="true" showDetail="true" life="3000" />
+ 
+    <p:dialog header="Login" widgetVar="dlg" resizable="false">
+        <h:panelGrid columns="2" cellpadding="5" id="pnlLogin">
+            <h:outputLabel for="username" value="Username:" />
+            <p:inputText id="username" value="#{MBUsuario.nome}" required="true" label="username" />
+            
+            <h:outputLabel for="password" value="Password:" />
+            <p:password id="password" value="#{MBUsuario.senha}" required="true" label="password" />
+            
+            <f:facet name="footer">
+                <p:commandButton value="Login" update="growl" actionListener="#{MBUsuario.login}"
+                                 oncomplete="handleLoginRequest(xhr, status, args)"/>
+                   <p:commandButton value="Cancelar" onclick="PF('dlg').hide();"/>
+            </f:facet>
+            
+        </h:panelGrid>
+    </p:dialog>
+</h:form>
+</ui:composition>
