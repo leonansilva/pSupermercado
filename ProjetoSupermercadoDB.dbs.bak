@@ -1,15 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<project name="ProjetoSupermercado" id="Project_46bdf8" html="y" template="Default" database="MySql" >
-	<schema name="supermercado" schemaname="supermercado" >
+<project name="hue" id="Project_5f12bd" html="y" template="Default" database="MySql" >
+	<schema name="supermercado" catalogname="supermercado" >
 		<table name="fornecedor" >
 			<column name="id_fornecedor" type="int" jt="4" mandatory="y" autoincrement="y" />
 			<column name="nome_fornecedor" type="varchar" length="255" jt="12" mandatory="y" />
-			<index name="pk_tabela fornecedor" unique="PRIMARY_KEY" >
+			<index name="pk_fornecedor" unique="PRIMARY_KEY" >
 				<column name="id_fornecedor" />
 			</index>
-			<fk name="fk_fornecedor" to_schema="supermercado" to_table="produto" >
-				<fk_column name="id_fornecedor" pk="id_fornecedor" />
-			</fk>
 			<storage><![CDATA[engine=InnoDB]]></storage>
 		</table>
 		<table name="produto" >
@@ -18,36 +15,35 @@
 			<column name="qtd" type="int" jt="4" mandatory="y" />
 			<column name="preco" type="double" jt="8" mandatory="y" />
 			<column name="id_fornecedor" type="int" jt="4" mandatory="y" />
-			<index name="pk_tabela produto" unique="PRIMARY_KEY" >
+			<index name="pk_produto" unique="PRIMARY_KEY" >
 				<column name="id_produto" />
 			</index>
-			<index name="pk_produto" unique="UNIQUE" >
+			<index name="idx_produto" unique="NORMAL" >
 				<column name="id_fornecedor" />
 			</index>
+			<fk name="fk_produto" to_schema="supermercado" to_table="fornecedor" >
+				<fk_column name="id_fornecedor" pk="id_fornecedor" />
+			</fk>
 			<storage><![CDATA[engine=InnoDB]]></storage>
 		</table>
 		<table name="usuario" >
 			<column name="id" type="int" jt="4" mandatory="y" autoincrement="y" />
 			<column name="nome" type="varchar" length="255" jt="12" mandatory="y" />
-			<column name="senha" type="int" jt="4" mandatory="y" />
-			<index name="pk_tabela usuarios" unique="PRIMARY_KEY" >
+			<column name="senha" type="varchar" length="255" jt="12" mandatory="y" />
+			<index name="pk_usuario" unique="PRIMARY_KEY" >
 				<column name="id" />
 			</index>
 			<storage><![CDATA[engine=InnoDB]]></storage>
 		</table>
 	</schema>
 	<connector name="MySql" database="MySql" driver_class="com.mysql.jdbc.Driver" driver_jar="mysql-connector-java-5.1.34-bin.jar" host="localhost" port="3306" user="root" passwd="MDg5MA==" schema_mapping="" />
-	<layout id="Layout_46bdf8" name="ProjetoSupermercado" show_relation_columns="y" >
-		<entity schema="supermercado" name="usuario" color="b2cdf7" x="45" y="60" />
-		<entity schema="supermercado" name="produto" color="b2cdf7" x="180" y="45" />
-		<entity schema="supermercado" name="fornecedor" color="b2cdf7" x="330" y="75" />
-		<script name="fornecedor" id="SQL_4ceef8" >
+	<layout id="Layout_5f12bd" name="hue" show_relation_columns="y" >
+		<entity schema="supermercado" name="produto" color="b2cdf7" x="360" y="60" />
+		<entity schema="supermercado" name="usuario" color="b2cdf7" x="75" y="195" />
+		<entity schema="supermercado" name="fornecedor" color="b2cdf7" x="45" y="45" />
+		<script name="fornecedor" id="SQL_649010" >
 			<string><![CDATA[INSERT INTO supermercado.fornecedor
-	(nome_fornecedor) VALUES ("Nestlé" );]]></string>
-		</script>
-		<script name="usuario" id="SQL_2c2c19" confirmed="y" >
-			<string><![CDATA[INSERT INTO supermercado.usuario
-	(nome, senha) VALUES ("Igor Carvalho", "1234" );]]></string>
+	( id_fornecedor, nome_fornecedor) VALUES ( ?, ? );]]></string>
 		</script>
 	</layout>
 </project>
